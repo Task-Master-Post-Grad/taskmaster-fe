@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Input from '@mui/material/Input';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 const ariaLabel = { 'aria-label': 'description' };
 
@@ -8,8 +8,17 @@ const Form = (props: any) => {
   const [newTodo, setNewTodo] = useState('')
   const updateTodos = (event: any) => {
     setNewTodo(event.currentTarget.value)
-    props.addTodo(newTodo)
   }
+
+  const addToTheList = () => {
+    props.addTodo(newTodo)
+    clearInput()
+  }
+
+  const clearInput = () => {
+    setNewTodo('')
+  }
+
   return (
     <Box
       component="form"
@@ -19,7 +28,8 @@ const Form = (props: any) => {
       noValidate
       autoComplete="off"
       >
-      <Input placeholder='Add Todo' value={newTodo} inputProps={ariaLabel} onChange={(event) => updateTodos(event)}/>
+      <Input placeholder='Todos...' value={newTodo} inputProps={ariaLabel} onChange={(event) => updateTodos(event)}/>
+      <Button onClick={addToTheList}>Add</Button>
     </Box>
   )
 }
