@@ -4,17 +4,23 @@ import { Checkbox, CheckboxProps } from '@mui/material';
 import { FormGroup, FormControlLabel } from '@mui/material';
 
 
-const Item = ({ name }: any) => {
-    const [checked, setChecked] = useState(true);
-    const [label, setLabel] = useState('label')
+const Item = ({ name, removeFromList }: any) => {
+    const [checked, setChecked] = useState(false);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const removeTodo = () => {
+      if(!checked) {
+        removeFromList(name)
+      }
+    }
+
+    const handleChange = (event: any) => {
       setChecked(event.target.checked);
+      removeTodo()
     };
   
     return (
       <div>
-        <FormControlLabel control={<Checkbox />} label={name} />
+        <FormControlLabel control={<Checkbox />} onChange={(event) => handleChange(event)} label={name} />
       </div>
     );
 }

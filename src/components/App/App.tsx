@@ -13,11 +13,18 @@ function App() {
   const addTodo = (todo: any) => {
     setTodos([...todos, todo])
   }
+
+  const removeFromList = (todo: any) => {
+    const unfinishedTodos = todos.filter((item: any) => item !== todo)
+    console.log(unfinishedTodos)
+    setTodos(unfinishedTodos)
+  }
+
   return (
     <div className="App">
       <h1 style={{fontSize: '3rem'}}>Task Master</h1>
       <Container sx={{ py: 0, display: 'flex', alignItems: 'baseline'}} maxWidth="md">
-          <ToDos todos={todos} addTodo={addTodo}/>
+          <ToDos todos={todos} addTodo={addTodo} removeFromList={removeFromList}/>
           <Grid container spacing={0} sx={{display: 'flex', flexDirection: 'column'}}>
             <BehavioralQuestion />
             <TechQuestion />

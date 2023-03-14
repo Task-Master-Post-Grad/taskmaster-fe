@@ -15,7 +15,7 @@ const TechQuestion = () => {
   })
 
   return(
-    <Card sx={{ minWidth: 275, minHeight: 200, margin: '1rem', padding: '1rem'}}>
+    <Card sx={{ minWidth: 275, minHeight: 200, margin: '1rem', padding: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       Daily Technical Interview Question
       <CardContent sx={{display: 'flex', alignItems: 'center'  }}>
         <Typography sx={{fontSize: '1.5rem'}}>

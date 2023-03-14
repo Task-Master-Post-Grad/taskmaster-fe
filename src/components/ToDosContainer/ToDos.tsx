@@ -9,6 +9,7 @@ const ToDos: React.FC<any> = (props) => {
       <Item 
         key={index}
         name={item}
+        removeFromList={props.removeFromList}
       />
     )
   })
