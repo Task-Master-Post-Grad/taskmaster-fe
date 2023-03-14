@@ -15,11 +15,13 @@ const ToDos: React.FC<any> = (props) => {
 
   return(
     <Container>
-      <Form addTodo={props.addTodo}/>
-      <h2>Todos: </h2>
-      <FormGroup>
-        {todosList}
-      </FormGroup>
+      <Card style={{minWidth: 275, minHeight: 250, display: 'flex', flexDirection: 'column'}}>
+        <Form addTodo={props.addTodo}/>
+        <h2>Todos: </h2>
+        <FormGroup>
+          {todosList}
+        </FormGroup>
+      </Card>
     </Container>
   )
 }

@@ -15,8 +15,8 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>TaskMaster</h1>
-      <Container sx={{ py: 0, display: 'flex'}} maxWidth="md">
+      <h1 style={{fontSize: '3rem'}}>Task Master</h1>
+      <Container sx={{ py: 0, display: 'flex', alignItems: 'baseline'}} maxWidth="md">
           <ToDos todos={todos} addTodo={addTodo}/>
           <Grid container spacing={0} sx={{display: 'flex', flexDirection: 'column'}}>
             <BehavioralQuestion />
