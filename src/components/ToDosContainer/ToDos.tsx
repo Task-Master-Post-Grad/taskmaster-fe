@@ -4,7 +4,6 @@ import { Container, Card, FormGroup, FormControlLabel } from '@mui/material';
 import Form from '../Form/Form';
 
 const ToDos: React.FC<any> = (props) => {
-
   const todosList = props.todos.map((item: any, index: number) => {
     return(
       <Item 

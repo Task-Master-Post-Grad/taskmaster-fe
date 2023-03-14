@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
 import ToDos from '../ToDosContainer/ToDos';
+import BehavioralQuestion from '../BehavioralQuestion/BehavioralQuestion';
+import TechChallenge from '../TechChallenge/TechChallenge';
+import TechQuestion from '../TechQuestion/TechQuestion';
+import { Container } from '@mui/system';
+import { Grid } from '@mui/material';
 
 function App() {
   const [todos, setTodos] = useState<any>(['Job Hunt'])
@@ -11,7 +16,14 @@ function App() {
   return (
     <div className="App">
       <h1>TaskMaster</h1>
-      <ToDos todos={todos} addTodo={addTodo}/>
+      <Container sx={{ py: 0, display: 'flex'}} maxWidth="md">
+          <ToDos todos={todos} addTodo={addTodo}/>
+          <Grid container spacing={0} sx={{display: 'flex', flexDirection: 'column'}}>
+            <BehavioralQuestion />
+            <TechQuestion />
+            <TechChallenge />
+          </Grid>
+      </Container>
     </div>
   );
 }
