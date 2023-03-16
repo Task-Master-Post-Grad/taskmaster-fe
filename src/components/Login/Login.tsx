@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Container, Card, Button, TextField, CardActions, IconButton,Typography, Toolbar, AppBar } from '@mui/material'
 
 const style ={
@@ -12,10 +13,12 @@ const style ={
 }
 
 const Login = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState('')
   const [account, setAccount] = useState(true)
   const checkLogin = () => {
     console.log('login')
+    navigate("/home");
     //check to see if username exists, if it does - check to see if password matches
     //else return invalid username or password
   }
