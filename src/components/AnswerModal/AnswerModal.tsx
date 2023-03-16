@@ -22,7 +22,7 @@ const AnswerModal = (props: any) => {
       <Box sx={style}>
       <Button onClick={props.closeModal} sx={{cursor: 'pointer'}}>🆇</Button>
       <TextField
-          id="outlined-multiline-flexible"
+          id="outlined-multiline-static"
           label="Answer Question"
           multiline
           maxRows={4}
