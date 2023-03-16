@@ -1,6 +1,5 @@
-import React from 'react'
-import { Container, Card, Button, TextField, CardActions } from '@mui/material'
-import { IconButton,Typography, Toolbar, Box, AppBar } from '@mui/material';
+import React, { useState } from 'react'
+import { Container, Card, Button, TextField, CardActions, IconButton,Typography, Toolbar, AppBar } from '@mui/material'
 
 const style ={
   display: 'flex',
@@ -13,7 +12,23 @@ const style ={
 }
 
 const Login = () => {
+  const [user, setUser] = useState('')
+  const [account, setAccount] = useState(true)
+  const checkLogin = () => {
+    console.log('login')
+    //check to see if username exists, if it does - check to see if password matches
+    //else return invalid username or password
+  }
+
+  const createAccount = () => {
+    if(account) {
+      setAccount(false)
+    }
+    else {setAccount(true)}
+  }
+
   return(
+    <div>
     <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <AppBar position="static">
       <Toolbar>
@@ -28,14 +43,25 @@ const Login = () => {
             Task Master
       </Typography>
       </AppBar>
+      {account ? 
     <Card sx={style}>
-      <TextField   id="outlined"label="Username"/>
+      <TextField id="outlined"label="Username"/>
       <TextField id='outlined' label='Password'/>
       <CardActions>
-        <Button variant="contained">Login</Button>
+        <Button variant="contained" onClick={checkLogin}>Login</Button>
       </CardActions>
-    </Card>
+      <CardActions>
+        <Button onClick={createAccount}>Create Account</Button>
+      </CardActions>
+    </Card> : <Card sx={style}>
+      <TextField id="outlined"label="Create Username"/>
+      <TextField id='outlined' label='Create Password'/>
+      <CardActions>
+        <Button onClick={createAccount}>Create Account</Button>
+      </CardActions>
+    </Card>}
     </Container>
+    </div>
   )
 }
 
