@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Container, Card, CardContent, Typography, CardActions, Button } from '@mui/material'
 import AnswerModal from '../AnswerModal/AnswerModal'
 
-const TechQuestion = () => {
+const TechQuestion = (props: any) => {
   const [tQuestions, setTQuestions] = useState(['How do you implement your error handling?', 'What is your process to test and find bugs in an application?'])
   const [dailyQuestion, setDailyQuestion] = useState('') 
   const [open, setOpen] = useState(false)
+  const [tQuestionId, setTQuestionId] = useState('')
 
   const openModal = () => {
     setOpen(true)
@@ -17,12 +18,14 @@ const TechQuestion = () => {
 
   const randomizeTQuestion = () => {
     const question = tQuestions[Math.floor(Math.random()*tQuestions.length)]
+    // const question = props.tQuestions[Math.floor(Math.random()*props.tQuestions.length)]
     setDailyQuestion(question)
+    // setBQuestionId(question['id'])
   }
 
   useEffect(() => {
     randomizeTQuestion()
-  })
+  }, [props.tQuestions])
 
   return(
     <Container>

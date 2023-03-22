@@ -12,12 +12,12 @@ const style ={
   padding: '1rem'
 }
 
+
 const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState('')
   const [account, setAccount] = useState(true)
   const checkLogin = () => {
-    console.log('login')
     navigate("/home");
     //check to see if username exists, if it does - check to see if password matches
     //else return invalid username or password

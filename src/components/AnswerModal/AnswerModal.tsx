@@ -1,5 +1,22 @@
 import React, { useState } from 'react'
 import { Modal, Box, TextField, CardActions, Button } from '@mui/material'
+import { useQuery, gql, useMutation } from '@apollo/client'
+
+const B_ANSWER = gql`
+mutation createUserBQuestion ($userId: Int!, $bQuestionId: Int!, $answer: String!) {
+  createUserBQuestion(input: {userId: $userId, bQuestionId: $bQuestionId, answer: $answer})
+  {userBQuestion {
+      id
+      userId
+      bQuestionId
+      status
+      answer
+      bQuestion {
+        question
+      }
+    }
+  }
+}`
 
 const style = {
   position: 'absolute',
@@ -16,6 +33,19 @@ const style = {
 };
 
 const AnswerModal = (props: any) => {
+  const [ saveTheAnswer, {loading, error, data} ] = useMutation(B_ANSWER)
+  const [answer, setAnswer] = useState('')
+
+  const answerQuestion = async () => {
+    const result = await saveTheAnswer({
+      variables: {
+        userId: 1,
+        bQuestionId: props.id,
+        answer: answer
+      }
+    })
+  }
+
   return(
     <div className='modal-card'>
     <Modal open={props.open} onClose={props.closeModal} >
@@ -27,9 +57,11 @@ const AnswerModal = (props: any) => {
           multiline
           maxRows={4}
           sx={{width: 350}}
+          value={answer}
+          onChange={event => setAnswer(event.target.value)}
         />
       <CardActions>
-        <Button>SAVE</Button>
+        <Button onClick={answerQuestion}>SAVE</Button>
       </CardActions>
       </Box>
     </Modal>
