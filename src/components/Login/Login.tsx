@@ -12,23 +12,23 @@ const style ={
   padding: '1rem'
 }
 
-const Login = () => {
+
+const Login = (props: any) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState({})
   const [account, setAccount] = useState(true)
   const checkLogin = () => {
-    console.log('login')
+    props.login()
+    setUser(props.profile)
     navigate("/home");
-    //check to see if username exists, if it does - check to see if password matches
-    //else return invalid username or password
   }
 
-  const createAccount = () => {
-    if(account) {
-      setAccount(false)
-    }
-    else {setAccount(true)}
-  }
+  // const createAccount = () => {
+  //   if(props.profile) {
+  //     setAccount(true)
+  //   }
+  //   else {setAccount(false)}
+  // }
 
   return(
     <div>
@@ -46,23 +46,26 @@ const Login = () => {
             Task Master
       </Typography>
       </AppBar>
-      {account ? 
+      {/* {props.profile ?  */}
     <Card sx={style}>
+      {/* <TextField id="outlined"label="Username"/>
+      <TextField id='outlined' label='Password'/> */}
+      <CardActions>
+        <Button variant="contained" onClick={checkLogin}>Login with Google</Button>
+      </CardActions>
+      {/* <CardActions>
+        <Button onClick={createAccount}>Create Account</Button>
+      </CardActions> */}
+    </Card> 
+    {/* : <Card sx={style}>
       <TextField id="outlined"label="Username"/>
+      <TextField id='outlined' label="Email" />
       <TextField id='outlined' label='Password'/>
       <CardActions>
-        <Button variant="contained" onClick={checkLogin}>Login</Button>
-      </CardActions>
-      <CardActions>
         <Button onClick={createAccount}>Create Account</Button>
-      </CardActions>
-    </Card> : <Card sx={style}>
-      <TextField id="outlined"label="Create Username"/>
-      <TextField id='outlined' label='Create Password'/>
-      <CardActions>
-        <Button onClick={createAccount}>Create Account</Button>
-      </CardActions>
-    </Card>}
+      </CardActions> */}
+    {/* </Card> */}
+    {/* } */}
     </Container>
     </div>
   )

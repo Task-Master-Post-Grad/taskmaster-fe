@@ -3,10 +3,10 @@ import { Card, Typography, CardContent, CardActions, Button } from '@mui/materia
 import AnswerModal from '../AnswerModal/AnswerModal'
 import { Container } from '@mui/system'
 
-const BehavioralQuestion = () => {
-  const [bQuestions, setBQuestions] = useState(['What are you looking for in your next role?', 'What is the most challenging aspect of your current project?'])
+const BehavioralQuestion = (props: any) => {
   const [dailyQuestion, setDailyQuestion] = useState('')
   const [open, setOpen] = useState(false)
+  const [bQuestionId, setBQuestionId] = useState('')
 
   const openModal = () => {
     setOpen(true)
@@ -17,17 +17,19 @@ const BehavioralQuestion = () => {
   }
 
   const randomizeBQuestion = () => {
-    const question = bQuestions[Math.floor(Math.random()*bQuestions.length)]
-    setDailyQuestion(question)
-  }
+      const question = props.bQuestions[Math.floor(Math.random()*props.bQuestions.length)]
+      setDailyQuestion(question['question'])
+      setBQuestionId(question['id'])
+}
 
   useEffect(() => {
-    randomizeBQuestion()
-  })
+   randomizeBQuestion()
+  }, [props.bQuestions])
 
   return(
+    
     <Container>
-    {open && <AnswerModal closeModal={closeModal} open={open} />}
+    {open && <AnswerModal closeModal={closeModal} open={open} id={bQuestionId}/>}
     <Card sx={{ minWidth: 275, minHeight: 200, margin: '1rem', padding: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       Daily Behavioral Interview Question
       <CardContent sx={{display: 'flex', alignItems: 'center'}}>
