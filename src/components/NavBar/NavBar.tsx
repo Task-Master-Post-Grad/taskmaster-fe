@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu';
 import { MenuItem, Menu, IconButton, Button, Typography, Toolbar, Box, AppBar } from '@mui/material';
 
-const NavBar = () => {
+const NavBar = (props: any) => {
   const date = Date()
   const newDate = date.toLocaleString().slice(0, 15)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -15,6 +15,11 @@ const NavBar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const logoutOfAccount = () => {
+    handleClose()
+    props.logOut()
+  }
 
   return(
     <Box sx={{ flexGrow: 1 }}>
@@ -51,7 +56,7 @@ const NavBar = () => {
                 <MenuItem onClick={handleClose}>Saved Answers</MenuItem>
               </NavLink>
               <NavLink to='/'>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={logoutOfAccount}>Logout</MenuItem>
               </NavLink>
           </Menu>
           <Typography variant="h1" component="div" sx={{ flexGrow: 1 }}>

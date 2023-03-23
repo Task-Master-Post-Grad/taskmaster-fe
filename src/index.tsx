@@ -12,9 +12,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// 578046450967-ndfffiugtjiajnpqp89ilh83ijrm8r8v.apps.googleusercontent.com
-// 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
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

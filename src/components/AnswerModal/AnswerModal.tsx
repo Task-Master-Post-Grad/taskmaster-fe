@@ -3,7 +3,7 @@ import { Modal, Box, TextField, CardActions, Button } from '@mui/material'
 import { useQuery, gql, useMutation } from '@apollo/client'
 
 const B_ANSWER = gql`
-mutation createUserBQuestion ($userId: Int!, $bQuestionId: Int!, $answer: String!) {
+mutation BAnswer ($userId: Int!, $bQuestionId: Int!, $answer: String!) {
   createUserBQuestion(input: {userId: $userId, bQuestionId: $bQuestionId, answer: $answer})
   {userBQuestion {
       id
@@ -17,6 +17,8 @@ mutation createUserBQuestion ($userId: Int!, $bQuestionId: Int!, $answer: String
     }
   }
 }`
+
+// ($name: Stirng!, authoProvdier: {credentials: {$email: string!, $password: string! }})
 
 const style = {
   position: 'absolute',
